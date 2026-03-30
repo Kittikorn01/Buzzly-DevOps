@@ -1,16 +1,20 @@
 services:
-  buzzly_db:
-    image: postgres:15-alpine
-    container_name: buzzly_db
-    restart: always
-    environment:
-      POSTGRES_USER: eiei
-      POSTGRES_PASSWORD: eiei1234
-      POSTGRES_DB: buzzly_db
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "5432:5432"
-    volumes:
-      - buzzly_pg_data:/var/lib/postgresql/data
+      - "80:80"
+    restart: always
+    depends_on:
+      - backend
 
-volumes:
-  buzzly_pg_data:
+  backend:
+    build:
+      context: ./mock-api
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    restart: always
+    env_file:
+      - ./mock-api/.env

@@ -1,0 +1,11 @@
+node_modules
+dist
+.git
+.gitignore
+*.md
+.dockerignore
+Dockerfile
+docker-compose.yml
+mock-api/node_modules
+# Exclude env files if you want to be extra safe during build time
+# But for Vite we need root .env during build
