@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* High-Density Professional — Linear/Raycast */
+
+    /* Background: subtle light gray */
+    --background: 220 14% 96%;
+    /* #F9FAFB */
+    --foreground: 222 47% 11%;
+
+    /* Cards: Pure white — pop via borders, not shadows */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary: Cyan #06B6D4 (Linear-like, used sparingly for interaction) */
+    --primary: 187 94% 43%;
+    /* #06B6D4 */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Muted Grayish Blue */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent: Navy Blue (Professional) */
+    --accent: 222 47% 11%;
+    /* #0F172A */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders: 1px solid rgba(0,0,0,0.08) — no shadows */
+    --border: 220 13% 91%;
+    --input: 214 32% 91%;
+    --ring: 199 89% 48%;
+
+    /* Semantic colors (success, info, warning) */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+    --warning: 47 95% 49%;
+    --warning-foreground: 222 47% 11%;
+
+    --radius: 0.75rem;
+
+    /* Chart Colors */
+    --chart-1: 199 89% 48%;
+    /* Sky Blue */
+    --chart-2: 243 75% 59%;
+    /* Indigo */
+    --chart-3: 142 71% 45%;
+    /* Emerald */
+    --chart-4: 47 95% 49%;
+    /* Amber */
+    --chart-5: 0 84% 60%;
+    /* Rose */
+
+    /* Sidebar: Clean White (Exactly as ref) */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 16% 47%;
+    --sidebar-primary: 222 47% 11%;
+    /* Dark active state background */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  /* Dark Mode — Linear-style: near-black #0B0B0B with dark gray borders */
+  .dark {
+    --background: 0 0% 4%;
+    /* #0B0B0B */
+    --foreground: 210 40% 98%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 215 100% 60%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 25 95% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 14%;
+    /* white/10 equivalent for dark */
+    --input: 217 32% 17%;
+    --ring: 215 100% 60%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --info: 215 100% 60%;
+    --info-foreground: 222 47% 11%;
+    --warning: 47 95% 49%;
+    --warning-foreground: 222 47% 11%;
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 215 100% 60%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217 32% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 32% 17%;
+    --sidebar-ring: 215 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Thai text: IBM Plex Sans Thai for cleaner rendering */
+  .font-thai,
+  [lang="th"] {
+    font-family: 'IBM Plex Sans Thai', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+
+  /* Geist Mono alternative: JetBrains Mono for numerical data */
+  .font-mono-numeric {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  /* Dark Mode Autofill Overrides — Scoped to Dev Section (.dev-autofill-fix) */
+  .dev-autofill-fix input:-webkit-autofill,
+  .dev-autofill-fix input:-webkit-autofill:hover,
+  .dev-autofill-fix input:-webkit-autofill:focus,
+  .dev-autofill-fix textarea:-webkit-autofill,
+  .dev-autofill-fix textarea:-webkit-autofill:hover,
+  .dev-autofill-fix textarea:-webkit-autofill:focus,
+  .dev-autofill-fix select:-webkit-autofill,
+  .dev-autofill-fix select:-webkit-autofill:hover,
+  .dev-autofill-fix select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #f8fafc !important; /* slate-50 */
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    transition: background-color 999999s ease-in-out 0s !important;
+    color-scheme: dark !important;
+  }
+}
+
+/* ─── Keyframe Animations ───────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ─── Landing Page Animations ──────────────────────────────────────────── */
+@keyframes landing-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes landing-float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes cloud-drift-slow {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(20px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes cloud-drift-reverse {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(-15px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-landing-float {
+  animation: landing-float 6s ease-in-out infinite;
+}
+
+.animate-landing-float-delayed {
+  animation: landing-float-delayed 7s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-cloud-drift-slow {
+  animation: cloud-drift-slow 15s ease-in-out infinite;
+}
+
+.animate-cloud-drift-reverse {
+  animation: cloud-drift-reverse 12s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out both;
+}
+
+@layer utilities {
+  /* Retro-Tech Utilities */
+
+  .glass-panel {
+    @apply bg-white border border-slate-100;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  }
+
+  .tech-border {
+    @apply border border-slate-100 relative overflow-hidden;
+  }
+
+  .container-cinema {
+    @apply mx-auto w-full max-w-[1600px];
+  }
+
+  .modern-shadow {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  }
+
+  .glass-card {
+    @apply bg-white border border-slate-100;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Text Utilities for Contrast */
+  .text-contrast {
+    @apply text-foreground font-medium;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full hover:bg-primary/40 transition-colors;
+  }
+
+  /* ─── Animation Utilities ──────────────────────────────────────────────── */
+  .animate-fade-in {
+    animation: fadeIn 0.25s ease-out both;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.2s ease-out both;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out both;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 1.5s ease-in-out infinite;
+  }
+
+  /* Stagger delays for list items */
+  .stagger-1 {
+    animation-delay: 0.05s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.10s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.15s;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.20s;
+  }
+
+  .stagger-5 {
+    animation-delay: 0.25s;
+  }
+
+  /* Press/tap effect */
+  .press-effect {
+    @apply transition-transform duration-100 active:scale-[0.97];
+  }
+
+  /* Row hover for tables */
+  .table-row-hover {
+    @apply transition-colors duration-150 hover:bg-slate-50/80;
+  }
+
+  /* ─── High-Density Bento Grid ─────────────────────────────────────────────── */
+  .bento-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(72px, auto);
+  }
+
+  .bento-card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    @apply rounded-lg bg-white dark:bg-card transition-colors;
+  }
+
+  .dark .bento-card {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .metric-numeric {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    @apply font-bold tabular-nums;
+  }
+
+  /* Progress bar — thick, rounded, high-contrast */
+  .progress-thick {
+    @apply h-[10px] rounded-full;
+  }
+
+  .progress-thick .progress-indicator {
+    @apply rounded-full bg-[hsl(187,94%,43%)] dark:bg-[hsl(215,100%,60%)];
+  }
+
+  /* Segmented Control — pill-shaped, sliding selection */
+  .segmented-control {
+    @apply inline-flex items-center rounded-full bg-muted/60 dark:bg-white/5 p-1 border border-slate-200 dark:border-white/10;
+  }
+
+  .segmented-control .segmented-control-trigger {
+    @apply rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all duration-200;
+  }
+
+  .segmented-control .segmented-control-trigger[data-state="active"] {
+    @apply text-foreground font-semibold bg-background dark:bg-white/10 shadow-sm;
+  }
+
+  /* Glassmorphism for tooltips/overlays */
+  .glass-tooltip {
+    @apply backdrop-blur-xl bg-white/95 dark:bg-zinc-900/95 border border-slate-200/80 dark:border-white/10;
+  }
+}
